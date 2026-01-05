@@ -1,0 +1,310 @@
+# Service definitions for UART Time Sender
+
+# Image manipulation services
+fill_image:
+  name: Fill Image
+  description: Fill the entire display with a single color
+  fields:
+    background_color:
+      name: Background Color
+      description: Color for letterbox areas (RGB)
+      default: [0, 0, 0]
+      selector:
+        color_rgb: {}
+
+set_pixel:
+  name: Set Pixel
+  description: Set a specific pixel to a color
+  fields:
+    x:
+      name: X Coordinate
+      description: X coordinate (0-319)
+      required: true
+      example: 10
+      default: 10
+      selector:
+        number:
+          min: 0
+          max: 319
+          mode: slider
+    y:
+      name: Y Coordinate
+      description: Y coordinate (0-169)
+      required: true
+      example: 10
+      default: 10
+      selector:
+        number:
+          min: 0
+          max: 319
+          mode: slider
+    pixel_color:
+      name: Pixel Color
+      description: Pixel color (RGB)
+      default: [255, 0, 0]
+      selector:
+        color_rgb: {}
+
+test_pattern:
+  name: Test Pattern
+  description: Display a test gradient pattern on the screen
+  fields: {}
+
+clear_image:
+  name: Clear Image
+  description: Clear the display (set to black)
+  fields: {}
+
+
+# Background image services
+load_background_image:
+  name: Load Background Image
+  description: Load background images for landscape and/or portrait orientations
+  fields:
+    file_path_landscape:
+      name: Landscape Image Path
+      description: Full path to image file for landscape orientation (320x170)
+      required: false
+      example: "/config/custom_components/uart_time_sender/AceMagic_LANDSCAPE.png"
+      selector:
+        text: 
+    file_path_portrait:
+      name: Portrait Image Path
+      description: Full path to image file for portrait orientation (170x320)
+      required: false
+      example: "/config/custom_components/uart_time_sender/AceMagic_PORTRAIT.png"
+      selector:
+        text: 
+    keep_text:
+      name: Keep Text
+      description: Keep text overlay on top of background
+      default: true
+      selector:
+        boolean: {}
+    resize_mode:
+      name: Resize Mode
+      description: How to resize image to fit display
+      default: "cover"
+      selector:
+        select:
+          translation_key: "resize_mode_options"
+          options:
+            - label: Cover (fill display, crop if needed)
+              value: "cover"
+            - label: Contain (fit within display, letterbox)
+              value: "contain"
+            - label: Stretch (fill display, distort if needed)
+              value: "stretch"
+            - label: Center (no resize, center on display)
+              value: "center"
+    background_color:
+      name: Background Color
+      description: Color for letterbox areas (RGB)
+      default: [0, 0, 0]
+      selector:
+        color_rgb: {}
+
+# Text services
+add_text:
+  name: Add Text
+  description: Add text from an entity OR static text to the display
+  fields:
+    entity_id:
+      name: Entity ID or "static"
+      description: |
+        Entity to display (e.g., sensor.temperature) OR use:
+        - "static:Your Text Here" for static text
+        - "none" or "static" for static text with value field
+      required: true
+      example: "sensor.temperature"
+      default: "static"
+      selector:
+        text: {}
+    value:
+      name: Static Value
+      description: Static text value (used when entity_id is "static", "none", or starts with "static:")
+      required: false
+      example: "Hello World!"
+      selector:
+        text: {}
+    x:
+      name: X Position
+      description: X coordinate (landscape 0-319 portrait 0-169)
+      required: true
+      example: 10
+      default: 10
+      selector:
+        number:
+          min: 0
+          max: 319
+          mode: box
+    y:
+      name: Y Position
+      description: Y coordinate (landscape 0-319 portrait 0-169)
+      required: true
+      example: 10
+      default: 10
+      selector:
+        number:
+          min: 0
+          max: 319
+          mode: box
+    font_size:
+      name: Font Size
+      description: Font size in pixels (8-72)
+      default: 16
+      example: 16
+      selector:
+        number:
+          min: 8
+          max: 72
+          mode: slider
+          step: 1
+    color:
+      name: Text Color
+      description: Text color as RGB values
+      default: [255, 255, 255]
+      example: [255, 255, 255]
+      selector:
+        color_rgb: {}
+    alignment:
+      name: Text Alignment
+      description: Text alignment relative to X position
+      default: "0"
+      example: "0"
+      selector:
+        select:
+          translation_key: "alignment_options"
+          options:
+            - label: Left
+              value: "0"
+            - label: Center
+              value: "1"
+            - label: Right
+              value: "2"
+    prefix:
+      name: Prefix
+      description: Text to display before the value
+      example: "Temp: "
+      selector:
+        text: {}
+    suffix:
+      name: Suffix
+      description: Text to display after the value
+      example: "°C"
+      selector:
+        text: {}
+    format:
+      name: Format String
+      description: Python format string for the value (use value)
+      default: "{value}"
+      example: "{value}"
+      selector:
+        text: {}
+    font_path:
+      name: Font Path
+      description: Path to TrueType font file (optional)
+      example: "/config/www/fonts/arial.ttf"
+      selector:
+        text: {}
+
+update_text:
+  name: Update Text
+  description: Update text element properties
+  fields:
+    entity_id:
+      name: Entity ID
+      description: Entity to update
+      required: true
+      example: "sensor.temperature"
+      selector:
+        text: {}
+    x:
+      name: X Position
+      description: X coordinate (landscape 0-319 portrait 0-169)
+      example: 20
+      selector:
+        number:
+          min: 0
+          max: 319
+          mode: box
+    y:
+      name: Y Position
+      description: Y coordinate (landscape 0-319 portrait 0-169)
+      example: 20
+      selector:
+        number:
+          min: 0
+          max: 319
+          mode: box
+    font_size:
+      name: Font Size
+      description: Font size in pixels (8-72)
+      example: 20
+      selector:
+        number:
+          min: 8
+          max: 72
+          mode: slider
+          step: 1
+    color:
+      name: Text Color
+      description: Text color as RGB values
+      example: [255, 0, 0]
+      selector:
+        color_rgb: {}
+    alignment:
+      name: Text Alignment
+      description: Text alignment relative to X position
+      example: "0"
+      selector:
+        select:
+          translation_key: "alignment_options"
+          options:
+            - label: Left
+              value: "0"
+            - label: Center
+              value: "1"
+            - label: Right
+              value: "2"
+    prefix:
+      name: Prefix
+      description: Text to display before the value
+      example: "Updated: "
+      selector:
+        text: {}
+    suffix:
+      name: Suffix
+      description: Text to display after the value
+      example: " units"
+      selector:
+        text: {}
+    format:
+      name: Format String
+      description: Python format string for the value (use value)
+      example: "{value}"
+      selector:
+        text: {}
+    font_path:
+      name: Font Path
+      description: Path to TrueType font file
+      example: "/config/www/fonts/arial.ttf"
+      selector:
+        text: {}
+
+remove_text:
+  name: Remove Text
+  description: Remove text element from display
+  fields:
+    entity_id:
+      name: Entity ID
+      description: Entity to remove
+      required: true
+      example: "sensor.temperature"
+      selector:
+        entity: {}
+
+clear_all_text:
+  name: Clear All Text
+  description: Remove all text elements from display
+  fields: {}

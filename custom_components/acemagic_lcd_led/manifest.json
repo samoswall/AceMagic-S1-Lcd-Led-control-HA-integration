@@ -1,0 +1,12 @@
+{
+  "domain": "acemagic_lcd_led",
+  "name": "AceMagic LCD&LED Controller",
+  "version": "1.0.0",
+  "codeowners": ["@samoswall"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/samoswall/AceMagic-S1-Lcd-Led-control-HA-integration",
+  "iot_class": "local_polling",
+  "requirements": ["pyserial-asyncio==0.6", "Pillow>=10.0.0", "libusb1>=3.0.0", "mdi_pil>=1.1.6"],
+  "loggers": ["acemagic_lcd_led"]
+}
