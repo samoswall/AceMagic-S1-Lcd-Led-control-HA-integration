@@ -1,0 +1,5 @@
+{
+    "name": "AceMagic LCD&LED Controller",
+    "render_readme": true,
+    "homeassistant": "2024.1.6"
+}
