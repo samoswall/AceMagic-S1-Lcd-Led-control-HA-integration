@@ -9,7 +9,9 @@
 ![](https://img.shields.io/github/stars/samoswall/AceMagic-S1-Lcd-Led-control-HA-integration.svg)
 [![Donate](https://img.shields.io/badge/donate-Yandex-red.svg)](https://yoomoney.ru/fundraise/b8GYBARCVRE.230309)
 
-Интеграция для Home Assistant позволяет выводить информацию на передний дисплей и управлять светодиодной подсветкой мини-пк AceMagic S1.
+[![EN](https://img.shields.io/badge/lang-EN-green.svg)](/README.en.md)      <-- Changing the description language - Click me 
+
+#### Интеграция для Home Assistant позволяет выводить информацию на передний дисплей и управлять светодиодной подсветкой мини-ПК AceMagic S1.
 
 ## Конфигурирование
 
