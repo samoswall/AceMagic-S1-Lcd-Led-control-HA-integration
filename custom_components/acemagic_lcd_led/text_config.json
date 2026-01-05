@@ -14,14 +14,14 @@
       "prefix": "",
       "suffix": "",
       "format": "{value}",
-      "font_path": "/config/custom_components/uart_time_sender/fonts/MaterialIcons-Regular.ttf",
+      "font_path": "/config/custom_components/acemagic_lcd_led/fonts/MaterialIcons-Regular.ttf",
       "is_static": true,
       "static_value": "mdi:television-ambient-light"
     }
   ],
   "display_config": {
-    "background_image_landscape": "/config/custom_components/uart_time_sender/AceMagic_LANDSCAPE.png",
-    "background_image_portrait": "/config/custom_components/uart_time_sender/AceMagic_PORTRAIT.png",
+    "background_image_landscape": "/config/custom_components/acemagic_lcd_led/AceMagic_LANDSCAPE.png",
+    "background_image_portrait": "/config/custom_components/acemagic_lcd_led/AceMagic_PORTRAIT.png",
     "last_orientation": 1
   }
 }
