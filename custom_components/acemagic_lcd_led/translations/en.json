@@ -1,0 +1,255 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "data": {
+          "port": "Serial Port",
+          "baudrate": "Baud Rate"
+        },
+        "description": "Select the port connected to your device."
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to the port. Please check the connection and port selection.",
+      "unknown": "An unknown error occurred."
+    },
+    "abort": {
+      "already_configured": "This serial port is already configured."
+    }
+  },
+  "entity": {
+    "number": {
+      "intensity": {
+        "name": "Intensity LED"
+      },
+      "speed": {
+        "name": "Speed LED"
+      }
+    },
+    "sensor": {
+      "text_sensors": {
+        "name": "Text sensors"
+      }
+    },
+    "binary_sensor": {
+      "connection": {
+        "name": "Connection"
+      }
+    },
+    "select": {
+      "theme": {
+        "name": "Theme",
+        "state": {
+          "Rainbow": "Rainbow",
+          "Breathing": "Breathing",
+          "Color Cycle": "Color Cycle",
+          "Off": "Off",
+          "Automatic": "Automatic"
+        }
+      },
+      "orientation": {
+        "name": "Orientation",
+        "state": {
+          "Portrait (170x320)": "Portrait (170x320)",
+          "Landscape (320x170)": "Landscape (320x170)"
+        }
+      }
+    },
+    "image": {
+      "display_image": {
+        "name": "Display Image"
+      }
+    }
+  },
+  "services": {
+    "fill_image": {
+      "name": "Fill Image",
+      "description": "Fill the entire display with a single color",
+      "fields": {
+        "background_color": {
+          "name": "Background Color",
+          "description": "Applies until update, not saved."
+        }
+      }
+    },
+    "set_pixel": {
+      "name": "Set Pixel",
+      "description": "Set a specific pixel to a color",
+      "fields": {
+        "x": {
+          "name": "X Coordinate",
+          "description": "X coordinate (landscape 0-319, portrait 0-169)"
+        },
+        "y": {
+          "name": "Y Coordinate",
+          "description": "Y coordinate (landscape 0-319, portrait 0-169)"
+        },
+        "pixel_color": {
+          "name": "Pixel Color",
+          "description": "Applies until update, clears background, not saved."
+        }
+      }
+    },
+    "test_pattern": {
+      "name": "Test Pattern",
+      "description": "Display a test gradient pattern on the screen"
+    },
+    "clear_image": {
+      "name": "Clear Image Background",
+      "description": "Clear the display (set to black), not saved."
+    },
+    "load_background_image": {
+      "name": "Set Background Images",
+      "description": "Sets background parameters for different screen orientations.",
+      "fields": {
+        "file_path_landscape": {
+          "name": "Background Image for Landscape Orientation",
+          "description": "Specify the path to the image file"
+        },
+        "file_path_portrait": {
+          "name": "Background Image for Portrait Orientation",
+          "description": "Specify the path to the image file"
+        },
+        "keep_text": {
+          "name": "Overlay Text on Background",
+          "description": "Keep text layer on top of background."
+        },
+        "resize_mode": {
+          "name": "Image Resizing",
+          "description": "How to resize the image to fit the screen."
+        },
+        "background_color": {
+          "name": "Background Color",
+          "description": "Use if image is missing or has transparency."
+        }
+      }
+    },
+    "add_text": {
+      "name": "Add Text",
+      "description": "Add static text or sensor value to display",
+      "fields": {
+        "entity_id": {
+          "name": "Entity ID or static",
+          "description": "Entity to display (e.g., sensor.temperature) or use\n static for static text with value field"
+        },
+        "value": {
+          "name": "Static Value",
+          "description": "Static text (used when entity ID is static,\n e.g., Hello world! or mdi:thermometer)"
+        },
+        "x": {
+          "name": "X Coordinate",
+          "description": "X coordinate (landscape 0-319, portrait 0-169)"
+        },
+        "y": {
+          "name": "Y Coordinate",
+          "description": "Y coordinate (landscape 0-319, portrait 0-169)"
+        },
+        "font_size": {
+          "name": "Font Size",
+          "description": "Font size in pixels (8-72)"
+        },
+        "color": {
+          "name": "Text Color",
+          "description": "Text color in RGB format"
+        },
+        "alignment": {
+          "name": "Text Alignment",
+          "description": "Horizontal text alignment"
+        },
+        "prefix": {
+          "name": "Prefix",
+          "description": "Text before value"
+        },
+        "suffix": {
+          "name": "Suffix",
+          "description": "Text after value"
+        },
+        "format": {
+          "name": "Format String",
+          "description": "Python format string for value (use value)"
+        },
+        "font_path": {
+          "name": "Font File Path",
+          "description": "Path to TrueType font file (optional)"
+        }
+      }
+    },
+    "update_text": {
+      "name": "Update Text",
+      "description": "Update text element properties. Update occurs if at least 1 parameter changes.",
+      "fields": {
+        "entity_id": {
+          "name": "Entity ID",
+          "description": "Entity to update. Specify an existing entity!\n List of entities is in the attributes of sensor.acemagic_text_sensors"
+        },
+        "x": {
+          "name": "X Coordinate",
+          "description": "X coordinate (landscape 0-319, portrait 0-169)"
+        },
+        "y": {
+          "name": "Y Coordinate",
+          "description": "Y coordinate (landscape 0-319, portrait 0-169)"
+        },
+        "font_size": {
+          "name": "Font Size",
+          "description": "Font size in pixels (8-72)"
+        },
+        "color": {
+          "name": "Text Color",
+          "description": "Text color in RGB format"
+        },
+        "alignment": {
+          "name": "Text Alignment",
+          "description": "Horizontal text alignment"
+        },
+        "prefix": {
+          "name": "Prefix",
+          "description": "Text before value"
+        },
+        "suffix": {
+          "name": "Suffix",
+          "description": "Text after value"
+        },
+        "format": {
+          "name": "Format String",
+          "description": "Python format string for value (use value)"
+        },
+        "font_path": {
+          "name": "Font File Path",
+          "description": "Path to TrueType font file (optional)"
+        }
+      }
+    },
+    "remove_text": {
+      "name": "Remove Text",
+      "description": "Remove text element from display",
+      "fields": {
+        "entity_id": {
+          "name": "Entity ID",
+          "description": "Entity to remove"
+        }
+      }
+    },
+    "clear_all_text": {
+      "name": "Clear All Text",
+      "description": "Remove all text elements from display"
+    }
+  },
+  "selector": {
+    "resize_mode_options": {
+      "options": {
+        "cover": "Crop (fill display, crop if necessary)",
+        "contain": "Contain (fit within display, black bars)",
+        "stretch": "Stretch (fill display, distort if necessary)",
+        "center": "Center (no resize, center on display)"
+      }
+    },
+    "alignment_options": {
+      "options": {
+        "0": "Left",
+        "1": "Center", 
+        "2": "Right"
+      }
+    }
+  }
+}
