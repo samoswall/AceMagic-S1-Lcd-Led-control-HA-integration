@@ -65,8 +65,12 @@ class USBManager:
         return success
     
     async def send_keepalive_packet(self) -> bool:
-        """Send keepalive packet: [0x55, 0xa1, 0xf2, 0x00, 0x00, 0x00, 0x00, 0x00]"""
-        header = bytes([ 0x55, 0xa1, 0xf2, 0x00, 0x00, 0x00, 0x00, 0x00 ])
+        """Send keepalive with time packet: [0x55, 0xa1, 0xf3, hours, minutes, seconds, 0x00, 0x00]"""
+        current_time = time.localtime()
+        hours = current_time.tm_hour
+        minutes = current_time.tm_min
+        seconds = current_time.tm_sec
+        header = bytes([ 0x55, 0xa1, 0xf3, hours, minutes, seconds, 0x00, 0x00 ])
         packet = bytearray(8 + 4096)
         packet[0:8] = header
         success = await self.send_packet(packet)
@@ -142,4 +146,5 @@ class USBManager:
     @property
     def is_connected(self) -> bool:
         """Check if USB device is connected."""
+
         return self._connected
