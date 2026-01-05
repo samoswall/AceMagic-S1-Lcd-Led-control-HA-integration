@@ -5,6 +5,7 @@
   "codeowners": ["@samoswall"],
   "config_flow": true,
   "dependencies": [],
+  "single_config_entry": true,
   "documentation": "https://github.com/samoswall/AceMagic-S1-Lcd-Led-control-HA-integration",
   "iot_class": "local_polling",
   "requirements": ["pyserial-asyncio==0.6", "Pillow>=10.0.0", "libusb1>=3.0.0", "mdi_pil>=1.1.6"],
